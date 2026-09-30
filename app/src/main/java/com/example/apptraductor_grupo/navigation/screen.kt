@@ -1,6 +1,5 @@
 package com.example.apptraductor_grupo.navigation
 
-
 sealed class Screen(val route: String) {
     data object Home : Screen("home_page")
 
@@ -10,7 +9,7 @@ sealed class Screen(val route: String) {
 
     data class Detail(val itemId: String) : Screen("detail_page/{itemId}") {
         fun buildRoute(): String {
-            return route.replace("itemId", itemId)
+            return route.replace("{itemId}", itemId)
         }
     }
 }

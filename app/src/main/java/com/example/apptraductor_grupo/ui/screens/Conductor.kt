@@ -13,5 +13,3 @@ fun HomeScreen2() {
         WindowWidthSizeClass.Expanded -> HomeScreenExpandida()
     }
 }
-
-

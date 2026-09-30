@@ -14,53 +14,60 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.apptraductor_grupo.R
-
+import com.example.apptraductor_grupo.ui.theme.AppTraductor_GrupoTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreenCompacta() {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(text = "Mi App Kotlin") })
+            TopAppBar(title = { Text(text = "Traductor") })
         }
     ) { innerPadding ->
         Column(
             modifier = Modifier
-                .padding(paddingValues = innerPadding)
+                .padding(innerPadding)
                 .fillMaxSize()
-                .padding(all = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(space = 20.dp)
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(20.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Image(
+                painter = painterResource(id = R.drawable.logo_foreground),
+                contentDescription = "Logo App",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(150.dp),
+                contentScale = ContentScale.Fit
+            )
+
             Text(
-                text = "¡Bienvenido!",
+                text = "¡Bienvenido al traductor!",
                 color = MaterialTheme.colorScheme.primary,
                 style = MaterialTheme.typography.titleLarge
             )
 
-            Button(onClick = { /* acción futura */ }) {
-                Text(text = "Presióname")
+            Button(
+                onClick = { },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(text = "Traducir")
             }
-
-            Image(
-                painter = painterResource(id = R.drawable.logo_background),
-                contentDescription = "Logo App",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(height = 150.dp),
-                contentScale = ContentScale.Fit
-            )
         }
     }
 }
 
-@Preview
+@Preview(name = "Compact", widthDp = 360, heightDp = 800, showBackground = true)
 @Composable
 fun HomeScreenCompactaPreview() {
-    HomeScreenCompacta()
+    AppTraductor_GrupoTheme {
+        HomeScreenCompacta()
+    }
 }
